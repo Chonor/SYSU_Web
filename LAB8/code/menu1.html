@@ -21,16 +21,18 @@
         }
 
         #header {            
-            orverflow: hidden;
+            overflow: hidden;
         }
 
-        #nav_outer {height:60px;}
-        #nav span,#nav a {font-size:14px;}
+        #nav_outer {height:60px;background:url(images/nav_bg.jpg),#6f4c1b;background-repeat: repeat-x,repeat;background-size: auto 30px,auto 60px;}
+        #nav span,#nav a {font-size:14px;color: white;font-family: 微软雅黑;}
 
-        #nav>li {width:140px;}
-
-        #nav .subnav {height:26px;width:960px;}
-
+		#nav>li {width:140px;float: left;padding: 8px 0px;text-align: center;font-weight: bolder;}
+		#nav>li:hover {background: url(images/nav_bg2.gif) no-repeat 0 -32px;}
+        #nav .subnav {height:26px;width:960px;display: none;position: absolute;top: 36px;left: 0px;}
+		#nav>li:hover .subnav{display: inline;}
+		#nav>li:hover .subnav>li{float:left;}
+		#nav>li:hover .subnav>li>*{color: #f1c149;font-weight: normal;margin: 0px 10px}
         #main_outer {
             height: 500px;
             background:url("images/header_bg.png") repeat-x;
