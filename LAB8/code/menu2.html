@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta content="text/html;charset=utf-8">
@@ -16,22 +16,20 @@
         li {list-style-type:none}
         #header_outer {
             height: 140px;
-            background: url(images/header_bg.png) repeat-x;
+            background: url("images/header_bg.png") repeat-x;
         }
 
         #header {            
             overflow: hidden;
         }
-
         #nav_outer {
-			height:60px;
-			background:url(images/nav_bg.jpg),#6f4c1b;
-			background-repeat: repeat-x,repeat;
-			background-size: auto 32px,auto 28px;
+			height:32px;
+			background:url(images/nav_bg.jpg);
+			background-repeat: repeat-x;
 		}
         #nav span,#nav a {
 			font-size:14px;
-			color: inherit;
+			color:inherit;
 			font-family: 微软雅黑;
 		}
 		#nav>li {
@@ -42,35 +40,42 @@
 			text-align: center;
 			font-weight: bolder;
 			background-position:0px -64px;
-			transition-property:background;
-			transition-duration:0.5s;
-		}
-		#nav>li:hover {
-			background: url(images/nav_bg2.gif) no-repeat 0px -32px border-box ;
+			transition-property: all;
+			transition-duration: 0.5s;
 		}
         #nav .subnav {
-			height:26px;width:960px;
-			display: none;
+			width:140px;
+			height: 26px;
+			position: relative;
+			top: 8px;
+			opacity: 0;
+			transition-property: all;
+			transition-duration: 1s;
 		}
-		#nav>li:hover .subnav{
-			position: absolute;
-			top: 38px;left: 0px;
-			display: block;
-		}
-		#nav>li>.subnav>li{
-			float: left;
-			color: #f1c149;
+		#nav .subnav>li{
+			padding:3px;
 			font-weight: normal;
-			padding: 0px 10px;
+			background: url(images/nav_bg.jpg) border-box;
 		}
-		#nav>li .subnav>li>a:hover{
-			color:#FF0;
-		}
-        #main_outer {
+		#main_outer {
             height: 500px;
-            background:url(images/header_bg.png) repeat-x;
+            background:url("images/header_bg.png") repeat-x;
             background-position: 0 -180px;
         }
+		#nav>li:hover {
+			background: url(images/nav_bg2.gif) no-repeat 0px -32px border-box ;
+			margin: auto;
+		}
+		#nav>li:hover .subnav{
+			opacity: 1;
+			display: block;
+		}
+		#nav .subnav>li:hover{
+			background:linear-gradient(rgba(0,127,255,0.20),rgba(0,127,255,0.20)) content-box,url(images/nav_bg.jpg) border-box;
+			color: yellow;
+		}
+        
+		#nav>li .subnav>li:nth-of-type(2n){display: none;}
     </style>  
 </head>
 <body>
