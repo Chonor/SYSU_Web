@@ -34,7 +34,7 @@
 		}
 		#nav>li {
 			width:140px;
-			height: 60px;
+			height: 32px;
 			float: left;
 			padding: 8px 0px;
 			text-align: center;
@@ -44,8 +44,9 @@
 			transition-duration: 0.5s;
 		}
         #nav .subnav {
+			overflow: hidden;
 			width:140px;
-			height: 26px;
+			height: 0px;
 			position: relative;
 			top: 8px;
 			opacity: 0;
@@ -68,7 +69,7 @@
 		}
 		#nav>li:hover .subnav{
 			opacity: 1;
-			display: block;
+			overflow: visible;
 		}
 		#nav .subnav>li:hover{
 			background:linear-gradient(rgba(0,127,255,0.20),rgba(0,127,255,0.20)) content-box,url(images/nav_bg.jpg) border-box;
