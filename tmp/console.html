@@ -1,0 +1,542 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/header.css" />
+<title>Console</title>
+	<style>
+		::-webkit-scrollbar {display:none}
+
+		* { margin:0; padding:0;font-size:16px;font-family:宋体;line-height:1.2em}
+		a:link, a:visited, a:hover, a:active {text-decoration: none;}
+		#main_bk{
+			background-color: black;
+			width: 110%;
+			left: -5%;
+			position: absolute;
+			top:-40%;
+			filter: blur(40px);
+			z-index: -1;
+		}
+		#bk_outer{
+			width: 100%;
+			height: 900px;
+			overflow: hidden;
+			position: absolute;
+			min-width: 1000px;
+		}
+		.wrapper {
+			margin: 0 auto;
+			width: 980px;
+			min-width: 1000px;
+			position:relative;
+		}
+		li {list-style-type:none}
+		#header_outer {
+			height: 60px;
+			background: black;
+		}
+
+		#header {            
+			overflow: hidden;
+		}
+		#header>p{
+			float: left;
+			font-size: 30px;
+			padding: 10px 30px;
+			color: white;
+		}
+		#logins{
+			font-size: 20px;
+			padding: 20px 30px;
+			float:right;
+			color: white;
+		}
+		
+		#nav_outer {
+			height:80px;
+			min-width: 1000px;
+			background:linear-gradient(rgba(0,0,0,0.70),rgba(0,0,0,0.50));
+		}
+		#logo{
+			height:60px;
+			width: 60px;
+			background:url( ../image/main_logo.png) ;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
+		#nav_outer #logo>a{
+			display:inline-block;
+			height:60px;
+			width: 60px;
+		}
+		#nav>li>a {
+			display:inline-block;
+			padding:10px 0px;
+			height: 23px;
+			width: 140px;
+			font-size:20px;
+			border-radius: 5px;
+			color:white;
+		}
+		.subnav>li>a {
+			display:inline-block;
+			padding:10px 0px;
+			height: 20px;
+			width: 140px;
+			font-size:18px;
+			color: white;
+		}
+		#nav_in>#logo{
+			margin: 10px 30px;
+			float: left;
+		}
+		#nav_in>#main_nav{
+			padding: 20px 0;
+			float:left;
+		}
+		#nav_in>#serach{float:left;}
+		#nav>li {
+			width:150px;
+			float: left;	
+			text-align: center;
+		}
+		#nav .subnav {
+			overflow: none;
+			width:140px;
+			position: relative;
+			margin: 0 5px;
+			top:0;
+			opacity: 0;
+			transition-property: all;
+			transition-duration: 1s;
+			background-color: rgba(0,131,166,.4);
+			z-index: 999;
+			
+		}
+		#nav>li:hover>a{
+			color: white;
+			font-weight: bolder;
+			background: rgba(0,131,166,.4); 
+			margin: auto;
+		}
+		#nav>li:hover .subnav{
+			opacity: 1;
+			overflow: visible;
+			border-radius: 10px;
+		}
+		#nav .subnav>li:hover{
+			background: rgba(255,255,255,.6);
+			border-radius: 5px;
+			font-weight: bolder;
+		}
+		#serach {
+			width: 250px;
+			padding: 30px 0px;
+			
+			position: relative;
+		}
+		#serach #content{
+			width: 250px;
+			border-radius: 5px;
+			position: absolute;
+		}
+		#serach #submit{
+			position: absolute;
+			right: -1px;
+			width: 22px;
+			height: 22px;
+			background: none;
+			z-index: 3;
+			border:none;
+		}
+		#serach i{
+			font-size: 1.4em;
+			position: absolute;
+			right: 0px;
+			z-index: 2;
+			color: darkgray
+		}
+		
+		
+		body{
+			background: #eee;
+			
+		}
+		#main_outer{
+			width: 100%;
+			min-width: 1000px;
+		}
+		#main_inner{
+			width: 980px;
+			margin: auto;
+			background: #f4f5f6;
+			height: 520px;
+		}
+		#menu{
+			width: 170px;
+			padding:30px 0px;
+			margin: 20px;
+			background: #2d2b32;
+			border: solid 1px #e4e5e6;
+			border-radius: 10px;
+			position: relative;
+			float: left;
+		}
+		.button{
+			margin: 0px 10px;
+			width: 150px;
+			height: 60px;
+			background: #2d2b32;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 20px;
+			
+		}
+		.button:hover{
+			box-shadow: inset 0px 0px 20px white;
+			color: aqua;
+		}
+		.info{
+			float: right;
+			width: 700px;
+			margin: 20px;
+		}
+		.titles{
+			display: block;
+			font-size: 25px;
+			padding: 10px 5px;
+			background: #f6f6f6;
+			color: #767676;
+			border-radius: 5px;	
+			text-shadow: 0px 0px 5px;
+		}
+		#first{
+			width: 150px;	
+		}
+		#sec{
+			width: 200px;
+		}
+		#thr{
+			width: 300px;
+		}
+		td{
+			text-align: center;
+			background: #e5e5e5;
+			padding: 3px;
+			margin: 2px auto;
+			height: 35px;
+		}
+		.buttonsub{
+			margin: 5px;
+			background: #2d2b32;
+			border: none;
+			color: aliceblue;
+			padding: 5px 5px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px gray;
+		}
+		.buttonsub:active{
+			box-shadow: inset 0px 0px 5px white;
+		}
+		#page{
+			width:240px;
+			height: 30px;
+			float: right;
+			text-align: left;
+			display: none;
+		}
+		#page>a{
+		  display: inline-block;
+			width: 80px;
+			text-align: center;
+		}
+		#user_info{
+			display: none;
+		}
+		#movie_info{
+			display: none;
+		}
+		#info{
+			display: none;
+		}
+		#welcome>button{
+			float: right;
+			width: 700px;
+			height: 450px;
+			margin: 20px;
+			font-size:50px;
+			color: gray;
+			font-style: italic;
+			font-weight: bolder;
+			text-shadow: 0px 0px 5px;
+			background: rgba(255,255,255,0);
+			border: none;
+		}
+	</style>
+</head>
+
+<body>
+ 
+   
+    <div id="header_outer">
+        <div id="header" class="wrapper">
+        	<p>网站名字啊</p>
+        	<a href="#" id="logins" onMouseMove="moveLogin('aa')" onMouseOut="outLogin('aaa')"><i class="fa fa-user-circle-o"></i> Login</a>
+        	<a href="#" id="logout" onMouseMove="moveLogin('aa')" onMouseOut="outLogin('aaa')">退出</a>
+        	
+        	
+        	
+        	
+        </div><!--header-->
+    </div> <!--header_outer-->
+    	
+	<div id="nav_outer">
+	  <div id="nav_in" class="wrapper">
+			<div id="logo"><a href="index.html"></a></div>
+       		<div id="main_nav">
+				<ul id="nav">
+					<li><a href="#">电影</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">电视</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">热评影视剧</a></li>
+					<li><a href="#">发现</a></li>
+				</ul>
+        	</div>
+       	 	<div id="serach">
+       	 		<form  action="search" method="get">
+	
+					<input type="text"  name="content" id="content" autocomplete="off">
+					<input type="submit" id="submit"  value="">	
+					<i class="fa fa-search fa-1x"></i>		
+				</form>
+       	 	</div>
+       	</div>
+    </div>
+    
+    <div id="main_outer">
+    	<div id="main_inner">
+    		<div id="menu">
+    			<button class="button" id="user_list" onClick="buttonOnclick(0)">用户列表</button>
+    			<button class="button" id="movie_list" onClick="buttonOnclick(1)">影片列表</button>
+    			<button class="button" id="info_list" onClick="buttonOnclick(2)">通知列表</button>
+    			<button class="button" id="addmove" onClick="buttonOnclick(3)">增加影片</button>
+    		</div>
+    		<div id="welcome" class="info" disabled><button>欢迎使用管理系统</button></div>
+    		<div id="user_info" class="info">
+    			<table>
+				  <tbody>
+					<tr>
+					  <th><a id="first" class="titles">用户ID</a></th>
+					  <th><a id="sec" class="titles">用户名</a></th>
+					  <th><a id="thr" class="titles">操作</a></th>
+					</tr>
+					<tr>
+					  <td>11</td>
+					  <td>111</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>111</td>
+					  <td>1111</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">赋予管理员权限</button><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+				  </tbody>
+				</table>
+
+    		</div>
+    		<div id="movie_info" class="info">
+    			<table border="0">
+				  <tbody>
+					<tr>
+					  <th><a class="titles" style="width: 450px">电影标题</a></th>
+					  <th><a class="titles" style="width: 200px">操作</a></th>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					 <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					 <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">修改</button><button class="buttonsub">删除</button></td>
+					</tr>
+				  </tbody>
+				</table>
+
+    		</div>
+			<div id="info" class="info">
+				<table width="200" border="0">
+				  <tbody>
+					<tr>
+					  <th><a style="width: 150px" class="titles">用户ID</a></th>
+					  <th><a style="width: 300px" class="titles">通知标题</a></th>
+					  <th><a style="width: 200px" class="titles">操作</a></th>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub">解除封禁</button></td>
+					</tr>
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td><button class="buttonsub">封禁账号</button><button class="buttonsub" onClick="confirm(1)" >解除封禁</button></td>
+					</tr>
+  				</tbody>
+			</table>
+
+			</div>
+   		<div style="clear: both"></div>
+    		<div id="page"><a href="#" class="buttonsub">上一页</a><a href="#" class="buttonsub">下一页</a>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>
+<script>
+	
+	function buttonOnclick(i){
+		var Obj=document.getElementById("welcome");
+		var UserInfo=document.getElementById("user_info");
+		var MovieInfo=document.getElementById("movie_info");
+		var Info=document.getElementById("info");
+		var Page=document.getElementById("page");
+		if(i==0){
+			Obj.style.display="none";
+			UserInfo.style.display="block";
+			MovieInfo.style.display="none";
+			Info.style.display="none";
+			Page.style.display="block";
+		}
+		else if(i==1){
+			Obj.style.display="none";
+			UserInfo.style.display="none";
+			MovieInfo.style.display="block";
+			Info.style.display="none";
+			Page.style.display="block";
+		}
+		else if(i==2){
+			Obj.style.display="none";
+			UserInfo.style.display="none";
+			MovieInfo.style.display="none";
+			Info.style.display="block";
+			Page.style.display="block";
+		}
+		else{
+			confirm(1);
+			
+		}
+	}
+	function onStart(cnt1,cnt2,cnt3){
+		var Obj=document.getElementsByClassName("buttonsub");
+		for(var i=cnt1*3;i<24;i++){
+			Obj[i].disabled="disabled";
+		}
+		for(i=cnt2*2+24;i<40;i++){
+			Obj[i].disabled="disabled";	
+		}
+		for(i=cnt3*2+40;i<56;i++){
+			Obj[i].disabled="disabled";
+		}
+	}
+</script>
+<script>onStart(3,7,0)</script>

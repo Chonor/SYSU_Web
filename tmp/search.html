@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="css/search_.css" />
+<title>无标题文档</title>
+
+	<style>
+		.search_date{
+			position: absolute;
+			bottom :10px;
+			left:200px;
+			font-size: 20px;
+			color: aliceblue;
+			text-shadow: 0px 0px 8px black;
+			font-style: italic;
+		}
+		
+	</style>
+</head>
+	
+<body onLoad="onstart()">
+	<div id="bk_outer">
+   		<img src="" id="main_bk">
+   </div>
+   
+    <div id="header_outer">
+        <div id="header" class="wrapper">
+        	<p>网站名字啊</p>
+        	<a href="#"><i class="fa fa-user-circle-o"></i> Login</a>
+        </div><!--header-->
+    </div> <!--header_outer-->
+    	
+	<div id="nav_outer">
+	  <div id="nav_in" class="wrapper">
+			<div id="logo"><a href="index.html"></a></div>
+       		<div id="main_nav">
+				<ul id="nav">
+					<li><a href="index.html">电影</a>
+						<ul class="subnav">
+							
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">电视</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">热评影视剧</a></li>
+					<li><a href="#">发现</a></li>
+				</ul>
+        	</div>
+       	 	<div id="serach">
+       	 		<form  action="search" method="get">
+	
+					<input type="text"  name="content" id="content" autocomplete="off">
+					<input type="submit" id="submit"  value="">	
+					<i class="fa fa-search fa-1x"></i>		
+				</form>
+       	 	</div>
+       	</div>
+    </div>
+    
+    
+    <div id="search_outer">
+		<div id="search_contain">
+			<form action="#" method="get" id="serach_form">	
+ 				<input type="text"  name="main_context" id="search1">
+				<input type="submit" id="submit1" value="搜索" class="botton">
+      				<select id="sort" name="sort"> 
+       				<option value="unselect">请选择</option> 
+        			<option value="date">最新</option>  
+                    <option value="hot">最热</option>  
+                    <option value="score">评分最高</option>  
+                    <option value="max">评论最多</option>  
+        		</select>			
+		  </form>
+       	<p id="search_result">结果如下:</p>
+        </div>
+       
+  	</div>
+	<div id="searched_outer">
+		<div id="searched">
+			<ul id="searched_list">
+				<li name="search_li">
+					<img src="" class="search_img">
+					<p class="search_name">name</p>
+					<hr class="search_hr">
+					<p class="search_info">info</p>
+					<p class="search_date">上映日期：111111</p>
+					<p class="search_score">10</p>
+					<i class="fa fa-heart-o" id="like1" onclick="onmouseclick(1)"></i>
+					
+				</li>
+				<li name="search_li">
+					<img src="" class="search_img">
+					<p class="search_name">name</p>
+					<p class="search_info">info</p>
+					<p class="search_score">10</p>
+					<hr class="search_hr" >
+					<i class="fa fa-heart-o" id="like2" onclick="onmouseclick(2)"></i>
+				</li>
+				<li name="search_li">
+					<img src="" class="search_img">
+					<p class="search_name">name</p>
+					<p class="search_info">info</p>
+					<p class="search_score">10</p>
+					<hr class="search_hr">
+					<i class="fa fa-heart-o" id="like3" onclick="onmouseclick(3)"></i>
+				</li>
+				<li name="search_li">
+					<img src="" class="search_img">
+					<p class="search_name">name</p>
+					<p class="search_info">info</p>
+					<p class="search_score">10</p>
+					<hr class="search_hr">
+					<i class="fa fa-heart-o" id="like4" onclick="onmouseclick(4)"></i>
+				</li>
+				<li name="search_li">
+					<img src="" class="search_img">
+					<p class="search_name">name</p>
+					<p class="search_info">info</p>
+					<p class="search_score">10</p>
+					<hr class="search_hr">
+					<i class="fa fa-heart-o" id="like5" onclick="onmouseclick(5)"></i>
+				</li>
+			</ul>
+			<a href="#" id="pre_page" class="page botton">上一页</a>
+			<a href="#" id="next_page"  class="page botton">下一页</a>
+		</div>
+	</div>
+    
+    <div id="footer_outer">
+    	<div id="footer">
+    		
+    	</div>
+    </div>
+</body>
+</html>
+<script>
+	var like1=0;
+	var like2=0;
+	var like3=0;
+	var like4=0;
+	var like5=0;
+	var list_size=3;
+	var i_like1=document.getElementById("like1");
+	var i_like2=document.getElementById("like2");
+	var i_like3=document.getElementById("like3");
+	var i_like4=document.getElementById("like4");
+	var i_like5=document.getElementById("like5");
+	function onstart(){
+		
+		if(like1==-1)i_like1.display="none";
+		else i_like1.display="visible";
+		if(like1==1)i_like1.className="fa fa-heart";
+		else i_like1.className="fa fa-heart-o";
+		
+		if(like2==-1)i_like2.display="none";
+		else i_like2.display="visible";
+		if(like2==1)i_like2.className="fa fa-heart";
+		else i_like2.className="fa fa-heart-o";
+		
+		if(like3==-1)i_like3.display="none";
+		else i_like3.display="visible";
+		if(like3==1)i_like3.className="fa fa-heart";
+		else i_like3.className="fa fa-heart-o";
+		
+		if(like4==-1)i_like4.display="none";
+		else i_like4.display="visible";
+		if(like4==1)i_like4.className="fa fa-heart";
+		else i_like4.className="fa fa-heart-o";
+		
+		if(like5==-1)i_like5.display="none";
+		else i_like5.display="visible";
+		if(like5==1)i_like5.className="fa fa-heart";
+		else i_like5.className="fa fa-heart-o";
+		
+		display_li();
+	}
+	function display_li(){
+		obj = document.getElementsByName("search_li");
+		for(var i=list_size;i<obj.length;i++){
+			obj[i].style.display="none";
+			
+		}
+	}
+	function onmouseclick(i){
+		if(i==1){
+			if(like1==1){
+				like1=0;
+				i_like1.className="fa fa-heart-o";
+			}
+			else{
+				like1=1;
+				i_like1.className="fa fa-heart";
+			}
+		}
+		else if(i==2){
+			if(like2==1){
+				like2=0;
+				i_like2.className="fa fa-heart-o";
+			}
+			else{
+				like2=1;
+				i_like2.className="fa fa-heart";
+			}
+		}
+		else if(i==3){
+			if(like3==1){
+				like3=0;
+				i_like3.className="fa fa-heart-o";
+			}
+			else{
+				like3=1;
+				i_like3.className="fa fa-heart";
+			}
+		}
+		else if(i==4){
+			if(like4==1){
+				like4=0;
+				i_like4.className="fa fa-heart-o";
+			}
+			else{
+				like4=1;
+				i_like4.className="fa fa-heart";
+			}
+		}
+		else if(i==5){
+			if(like5==1){
+				like5=0;
+				i_like5.className="fa fa-heart-o";
+			}
+			else{
+				like5=1;
+				i_like5.className="fa fa-heart";
+			}
+		}
+	}
+</script>

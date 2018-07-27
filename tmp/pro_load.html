@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用户登录界面</title>
+	<link  rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+	<link href="load.css" rel="stylesheet" type="text/css">
+	<script src="js/login.js"></script>
+	
+
+	<style>
+		
+		
+	</style>	
+</head>	
+<body >
+	<div id="bk_outer">
+   		<img src="image/bk_login.png" id="main_bk">
+   </div>
+   
+    <div id="header_outer">
+        <div id="header" class="wrapper">
+        	<p>网站名字啊</p>
+        	<a href="#"><i class="fa fa-user-circle-o"></i> Login</a>
+        </div><!--header-->
+    </div> <!--header_outer-->
+    	
+	<div id="nav_outer">
+	  <div id="nav_in" class="wrapper">
+			<div id="logo"><a href="index.html"></a></div>
+       		<div id="main_nav">
+				<ul id="nav">
+					<li><a href="#">电影</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">电视</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">热评影视剧</a></li>
+					<li><a href="#">发现</a></li>
+				</ul>
+        	</div>
+       	 	<div id="serach">
+       	 		<form  action="search" method="get">
+	
+					<input type="text"  name="content" id="content" autocomplete="off">
+					<input type="submit" id="submit"  value="">	
+					<i class="fa fa-search fa-1x"></i>		
+				</form>
+       	 	</div>
+       	</div>
+    </div>
+    
+    
+	<div id="outer_background">
+		<div id="background">
+			<form id="load_info" action="#" method="get">
+				
+					<p><input type="text" class="input_12" id="user" placeholder="用户名" onClick="inputin(1)"></p>
+					<p><input type="text" class="input_12" id="password"  placeholder="密码" onClick="inputin(2)"></p>
+					<p><input type="button" id="code" onclick="createCode()">
+					<input type="text" id="checkcode"  onBlur="validate()" onClick="inputworry()">
+					<i id="checkicon" class="fa fa-close" ></i></p>
+					
+					<input type="submit" name="login" class="input_34" id="button_left" value="登录"   >
+					<input type="submit" name="init" class="input_34" value="注册" id="button_right">
+				
+			</form>
+		</div>
+	</div>
+	
+	<div id="footer_outer">
+    	<div id="footer">
+    		
+    	</div>
+    </div>
+    
+    <script>createCode();</script>
+    
+</body>
+</html>
+	<script>
+  		
+	</script>

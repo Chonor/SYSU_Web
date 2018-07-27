@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html  lang="zh-cn">
+<head>
+    <title>消息框</title>
+    <style>
+        * {font-family:"宋体"}
+        #shadow {
+            position:absolute;
+            display:block;
+            top:0;
+            left:0;
+            z-index:998;
+            background:gray;
+            opacity: 0.5;
+        }
+        #msgbox1{
+            z-index:999;
+            position:absolute;
+            margin: auto;
+            display:none;
+        }
+        .msgheader{
+            position:relative;
+            width: 250px;
+            height: 22px;
+            border: 1px solid black;
+            background-color:rgb(221,221,221);
+            box-shadow:5px 5px 5px gray;
+        }
+        .msgtitle {
+            position:absolute;
+            height:20px;
+            padding: 1px 5px;
+        }
+        .msgclose{
+            position:absolute;
+            right:-1px;
+            top:-1px;
+            border: 1px solid black;
+            height:20px;
+            width:9px;
+            padding: 1px 5px;
+            background-color:rgb(172,172,172);
+        }
+        .msgcontent{
+            position: absolute;
+            background: #FFF;
+            top:22px;
+            width: 240px;
+            height: 80px;
+            border: 1px solid black;
+            padding: 5px;
+            box-shadow:5px 5px 5px gray;
+        }
+        .btns{
+            position: absolute;
+            width:80px;
+            left: 85px;
+            top: 85px;
+        }
+        .ok{
+            width:80px;
+            border:1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>消息框</h1>
+<script>
+    function showMsgBox(){
+        pos();
+        var name=document.querySelector("#name");
+        var msgtitle=document.querySelector(".msgtitle");
+        var msg=document.querySelector(".msgcontent");
+        if(name.value==""){
+            msgtitle.innerHTML="错误信息";
+            msg.innerHTML="姓名不能为空";
+        }
+        else{
+            msgtitle.innerHTML="姓名";
+            msg.innerHTML=name.value;
+        }
+    }
+    function hideMsgBox(boxId){
+        var box =document.querySelector("#msgbox1");
+        box.style.display="none";
+        hideShadow();
+    }
+
+    function showShadow(){
+        var shadow=document.querySelector("#shadow");
+        shadow.style.width=""+document.documentElement.scrollWidth+"px";
+        if(document.documentElement.clientHeight>document.documentElement.scrollHeight)
+            shadow.style.height=document.documentElement.clientHeight+"px";
+        else
+            shadow.style.height=document.documentElement.scrollHeight+"px";
+        shadow.style.display="block";
+    }
+
+    function hideShadow(){
+        var shadow=document.querySelector("#shadow");
+        shadow.style.display="none";
+    }
+
+    function pos(){
+        var box=document.querySelector("#msgbox1");
+        box.style.display="inline-block";
+        box.style.top=document.documentElement.clientHeight/2-60+"px";
+        box.style.left=document.documentElement.scrollWidth/2-126+"px";
+    }
+    function check(){
+        showShadow();
+        showMsgBox();
+    }
+
+</script>
+<div id="shadow">
+</div>
+<div id="msgbox1" class="msg msgbox">
+    <div class="msgheader msg">
+        <div class="msgtitle msg">这是标题</div>
+        <div class="msgclose msg" onclick="hideMsgBox('msgbox1')">X</div>
+    </div>
+    <div class="msgcontent msg">这是内容
+    </div>
+    <div class="btns"> <!--弹出框的OK按钮，按了就触发hideMsgBox函数 -->
+        <input type="button" class="ok" value="OK"  onclick="hideMsgBox('msgbox1')">
+    </div>
+</div>
+姓名：<input type="text" id="name">
+<input type="button" onclick="check()" value="check">
+</body>
+</html>

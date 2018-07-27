@@ -1,0 +1,134 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>Slider</title>  
+    <style>  
+		#imgs_out{
+			height: 300px;
+			width: 766px;
+			overflow: hidden;
+			position: relative;
+			margin: 10px auto;
+		}
+		#imgs{position: relative;white-space: nowrap;
+        }
+		.img{margin: 0 -2px;}
+		#points{
+			position: absolute;
+			top: 265px;
+			right: 70px;
+			white-space: nowrap;
+		}
+		.point{
+			display: inline-block;
+			background: url(images/navigator.png) no-repeat;
+			width: 12px;
+			height: 12px;
+			margin: 0px -2px;
+		}
+		.point1{background-position: 0px -24px;}
+		.arrow{
+			position: absolute;
+			background: url(images/arrows-30.png);
+			width: 32px;
+			height: 80px;
+			top:105px;
+			display: none;
+		}
+		#arrow1{left: 10px;background-position: 0px 0px;}
+		#arrow2{right: 10px;background-position: 0px 80px;}
+    </style>
+    
+</head>  
+<body >  
+    <div id="imgs_out" onMouseMove="movearrow(0)" onMouseOut="movearrow(1)">  
+        <div id="imgs">  
+            <img class="img" src="images/img1.jpg">  
+            <img class="img" src="images/img2.jpg">  
+            <img class="img" src="images/img3.jpg">
+            <img class="img" src="images/img1.jpg">    
+        </div>  
+     
+    <div id="points">
+		<div class="point point1" onClick="onclickPoint(0)"></div>  
+		<div class="point" onClick="onclickPoint(1)"></div>  
+		<div class="point" onClick="onclickPoint(2)"></div>  
+    </div>
+    
+    <div id="arrow1" class="arrow" onClick="arrowonclick(0)"></div>  
+   	<div id="arrow2" class="arrow" onClick="arrowonclick(1)"></div>  
+    </div> 
+</body >  
+</html> 
+<script> 
+		var pos=0;
+		var cnt=0;
+		var flag=true;
+		var ObjImg=document.querySelectorAll(".img");
+		var ObjPoints=document.querySelectorAll(".point");
+		var ObjArrow=document.querySelectorAll(".arrow");
+		var ObjImgout=document.querySelector("#imgs")
+		function moveImg(){ //移动图片
+			if(flag){  //鼠标没有移上去
+				pos=pos-7.7;
+				cnt++;
+				if(pos<=-2309)pos=0;
+				ObjImgout.style.left=pos+"px";
+				if(pos<=-2309)changePoint(0);
+				else if(pos<=-1539)changePoint(2);
+				else if(pos<=-769)changePoint(1);
+				else if(pos<=0)changePoint(0);
+			}
+			if(cnt<100)//移动中
+				setTimeout("moveImg()",20);
+			else if(cnt==100){//移动完成
+				cnt=0;
+				setTimeout("moveImg()",2000);
+			}
+		}
+		function onclickPoint(i){//点击圆点
+			if(i==0)pos=0;
+			else if(i==1)pos=-770;
+			else pos=-1540;
+			cnt=0;
+			ObjImgout.style.left=pos+"px";
+			changePoint(i);
+		}
+		function changePoint(i){ //改变圆点背景位置
+			for(j=0;j<3;j++){
+				if(i==j)ObjPoints[j].classList.add("point1");
+				else ObjPoints[j].classList.remove("point1");
+			}
+		}
+		function movearrow(i){ //显示 隐藏 箭头
+			if(i==0){
+				flag=false;
+				ObjArrow[0].style.display="block";
+				ObjArrow[1].style.display="block";
+			}else{
+				flag=true;
+				ObjArrow[0].style.display="none";
+				ObjArrow[1].style.display="none";
+			}
+		}
+		function arrowonclick(i){ //点击箭头
+			if(i==0){
+				if(pos<=-2310)pos=-1540;
+				else if(pos<=-1540)pos=-770;
+				else if(pos<=-770)pos=0;
+				else if(pos<=0)pos=-1540;
+			}else{
+				if(pos<=-2310)pos=-770;
+				else if(pos<=-1540)pos=0;
+				else if(pos<=-770)pos=-1540;
+				else if(pos<=0)pos=-770;
+			}
+			cnt=0;
+			ObjImgout.style.left=pos+"px";
+			if(pos<=-2309)changePoint(0);
+			else if(pos<=-1539)changePoint(2);
+			else if(pos<=-769)changePoint(1);
+			else if(pos<=0)changePoint(0);
+		}
+ 	</script>    
+<script>moveImg();</script> 

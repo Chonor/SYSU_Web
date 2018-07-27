@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{font-size: 18px;}
+	#top{
+		height: 60px;
+		width: 1250px;
+		background-color: aqua;
+		margin: 0 auto;
+	}
+	.list{
+		width: 1250px;
+		position: relative;
+		margin: 0 auto;
+	}
+	#introduct{
+		float: right;
+		height: 350px;
+		width: 150px;
+		border:1px gray gray;
+		
+		background: rgba(244,245,247,1) border-box;
+	}
+	
+	.list_item{
+		width:1090px;
+		float: left;
+		display: block;
+		background: rgba(244,245,247,1) border-box;
+	}	
+	.comment_item,.collect_item,.guess_item{
+		border-bottom:black 1px solid;
+	}
+	.movie_img_content{
+		display: inline;
+	}
+	.movie_name{
+		font-size: 13px;
+	}
+	#movie_img1{
+		height: 60px;
+		width: 60px;
+		vertical-align: middle;
+		margin-bottom: -7px;
+	}
+	#movie_content1{
+		height: 60px;
+		width: 90px;
+		vertical-align: middle;
+	}
+	.tips{
+		text-align: center;
+		font-size: 13px;
+		color: gray;
+	}

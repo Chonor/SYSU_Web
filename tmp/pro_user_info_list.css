@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户资料</title>
+<link href="user_info_list.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div>
+		<p id="list_title">我的评论</p>
+		<p></p>
+	</div>
+	<div>
+		<p id="list_title">我的收藏</p>
+		<p></p>
+	</div>
+	<div>
+		<p id="list_title">猜你喜欢</p>
+		<p></p>
+	</div>
+
+</body>
+</html>

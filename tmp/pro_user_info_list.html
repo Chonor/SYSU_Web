@@ -1,0 +1,379 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户资料</title>
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/header.css" />
+<style>
+
+	#top{
+		height: 60px;
+		width: 1250px;
+		background-color: aqua;
+		margin: 0 auto;
+	}
+	#userInfo_outer{
+		width: 100%;
+		min-width: 1000px;
+		height: 1100px;
+	}
+	#list{
+		width: 980px;
+		position: relative;
+		margin: 0 auto;
+	}
+	#user_info{
+		position: absolute;
+		height: auto;
+		width: 200px;
+		background: #f4f5f6;
+		text-align: center;
+		padding:15px;
+		margin: 20px;
+		border-radius: 20px;
+	}
+	#user_img{
+		height: 100px;
+		width: 100px;
+		margin: 10px;
+		box-shadow: 0px 0px 5px gray;
+	}
+	#user_name{
+		font-size: 30px;
+		padding: 10px;
+		width: 180px;
+		color: azure;
+		text-shadow: 0px 0px 10px gray;
+		height: 100px;
+	}
+	.user_introduct{
+		height: 350px;
+		width: 180px;
+		padding: 10px;	
+	}
+	.user_introduct>p{
+		text-align: left;
+		width: 160px;
+		overflow-y:scroll;
+		word-wrap:break-word;  
+    	word-break:break-all;  
+    	
+	}
+	.title3{
+		font-size: 22px;
+		padding: 10px;
+		width: 160px;
+		color: rgba(0,0,0,0.80);
+		text-shadow: 0px 0px 10px gray;
+		border-bottom: dotted 2px rgba(0,0,0,0.50);
+		text-align: left;
+		border-top: solid 2px gray;
+	}
+	#change_info{
+		height: 40px;
+		width: 130px;
+		background-color: rgba(0,167,222,0.99);
+		color: white;
+		border: 2px rgba(0,167,222,0.99);
+		font-size: 18px;
+		
+	}
+	.botton{
+		box-shadow: 0px 0px 5px gray;
+	}
+	.botton:active{
+		box-shadow: inset 0px 0px 5px gray;
+	}
+	.list_title{
+		font-size: 22px;
+		padding: 5px 10px;
+		color: rgba(0,0,0,0.80);
+		text-shadow: 0px 0px 10px gray;
+		border-bottom: solid 2px gray;
+		text-align: left;
+		margin-bottom: 10px;
+	}
+	#list_item{
+		width:660px;
+		position: absolute;
+		right: 0px;
+		display: block;
+		background: #f4f5f6 border-box;
+		margin: 20px;
+		border-radius: 20px;
+		padding:15px;	
+	}	
+	.item{
+		position: relative;
+		height: 340px;
+	}
+	.tips{
+		position: absolute;
+		font-size: 50px;
+		top: 180px;
+		left: 300px;
+		opacity: 0;
+	}
+	.info_item{
+		padding: 5px 10px;
+		margin: 5px;
+		height: 70px;
+		position: relative;
+		background: #f9f9f9;
+		border-radius: 10px;
+		
+	}
+	.pages .botton{
+		
+		height: 25px;
+		margin: 10px 10px;
+		font-size: 18px;
+		padding: 2px 10px;
+		color: white;
+		background: rgba(0,167,222,0.99);
+	}
+	.pages{
+		margin: 20px;
+		text-align: right;
+		position: absolute;
+		right: 0px;
+		bottom: -20px;
+	}
+	.info_name{
+		font-size: 24px;
+	}
+	.info_content{
+		width: 630px;
+		height: 40px;
+		overflow-y:scroll;
+		word-wrap:break-word;  
+    	word-break:break-all; 
+	}
+	.info_data{
+		position: absolute;
+		top:3px;
+		right: 10px;
+		font-style: italic;
+	}
+	.movie_img_content{
+		width: 65px;
+		height: 65px;
+		
+	}
+	.movie_name{
+		position: absolute;
+		font-size: 18px;
+		top: 0px;
+		left: 80px;
+		width: 550px;
+	}
+	.movie_content{
+		position: absolute;
+		font-size: 16px;
+		top: 20px;
+		left: 80px;
+		width: 550px;
+		height: 50px;
+		overflow-y:scroll;
+		word-wrap:break-word;  
+    	word-break:break-all;
+	}
+	#movie_img1{
+		height: 60px;
+		width: 60px;
+		vertical-align: middle;
+		margin-bottom: -7px;
+	}
+	#movie_content1{
+		height: 60px;
+		width: 90px;
+		vertical-align: middle;
+	}
+	.tips{
+		text-align: center;
+		font-size: 13px;
+		color: gray;
+	}
+#footer_outer{
+			background: #dfdfdf;
+   		 	clear: both;
+    		overflow: auto;
+    		padding-top: 10px;
+    		padding-bottom: 40px;
+			height: 150px;
+    		min-width: 1000px;
+		}
+	
+</style>
+<script>
+	function onstart(cnt1,cnt2,cnt3,cnt4,cnt5,cnt6){
+    obj=document.getElementsByClassName("info_item");
+    if(cnt1==0){
+		document.getElementById("info_pre").style.display="none";
+		document.getElementById("info_tag").style.opacity="1";
+	}	if(cnt3==0){
+		document.getElementById("commit_pre").style.display="none";
+		document.getElementById("commit_tag").style.opacity="1";
+	}	if(cnt5==0){
+		document.getElementById("like_pre").style.display="none";
+		document.getElementById("like_tag").style.opacity="1";
+	}  if(cnt2<3)document.getElementById("info_next").style.display="none";	if(cnt4<3)document.getElementById("commit_next").style.display="none";
+	if(cnt6<3)document.getElementById("like_next").style.display="none";
+    for(var i=cnt2;i<3;i++){
+        obj[i].style.display="none";
+    }
+		for(var i=cnt4+3;i<6;i++){
+        obj[i].style.display="none";
+    }
+		for(var i=cnt6+6;i<9;i++){
+        obj[i].style.display="none";
+    }
+}
+	</script>
+</head>
+<body>
+   
+    <div id="header_outer">
+        <div id="header" class="wrapper">
+        	<p>网站名字啊</p>
+        	<a href="#"><i class="fa fa-user-circle-o"></i> Login</a>
+        </div><!--header-->
+    </div> <!--header_outer-->
+    	
+	<div id="nav_outer">
+	  <div id="nav_in" class="wrapper">
+			<div id="logo"><a href="index.html"></a></div>
+       		<div id="main_nav">
+				<ul id="nav">
+					<li><a href="#">电影</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">电视</a>
+						<ul class="subnav">
+							<li><a href="#">精选</a></li>
+							<li><a href="#">即将上映</a></li>
+							<li><a href="#">上映中</a></li>
+							<li><a href="#">..加东西</a></li>
+						</ul>
+					</li>
+					<li><a href="#">热评影视剧</a></li>
+					<li><a href="#">发现</a></li>
+				</ul>
+        	</div>
+       	 	<div id="serach">
+       	 		<form  action="search" method="get">
+	
+					<input type="text"  name="content" id="content" autocomplete="off">
+					<input type="submit" id="submit"  value="">	
+					<i class="fa fa-search fa-1x"></i>		
+				</form>
+       	 	</div>
+       	</div>
+    </div>
+<div id="userInfo_outer">
+<div id="list">
+	<div id="user_info">
+		<img  id="user_img" src="../image/temp.jpg">
+		<p id="user_name">name</p>
+		<div id="user_introduct" class="user_introduct">
+			<h3 class="title3">个人简介</h3>
+			<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+		</div>
+		<div id="user_hobby" class="user_introduct"> 
+		<h3 class="title3">个人爱好</h3>
+			<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+			</div>
+		<button id="change_info" class="botton">修改个人信息</button>
+	</div>
+	<div id="list_item">
+		<div class="item">
+			<h3 class="list_title">我的通知</h3>
+			<p class="tips" id="info_tag">还没有通知</p>
+			<div class="info_item">
+				<p class="info_name">movie_name</p>
+				<p class="info_data">1111</p>
+				<p class="info_content">movie_comment</p>
+			</div>
+			<div class="info_item">
+				<p class="info_name">movie_name</p>
+				<p class="info_data">1111</p>
+				<p class="info_content">movie_comment</p>
+			</div>
+			<div class="info_item">
+				<p class="info_name">movie_name</p>
+				<p class="info_content">movie_comment</p>
+			</div>
+			<div class="pages">
+				<a href="" class="botton" id="info_pre">上一页</a>
+				<a href="" class="botton" id="info_next">下一页</a>
+			</div>
+		</div>
+		<div class="item">
+			<h3 class="list_title">我的评论</h3>
+			<p class="tips" id="commit_tag">还没有评论</p>
+			<div class="info_item">
+				<img class="movie_img_content" src="../image/temp.jpg">
+				<p class="movie_content">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="info_item">
+				<img class="movie_img_content"  src="../image/temp.jpg">
+				<p class="movie_content" >movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="info_item">
+				<img class="movie_img_content"  src="../image/temp.jpg">
+				<p class="movie_content">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="pages">
+				<a href="" class="botton" id="commit_pre">上一页</a>
+				<a href="" class="botton" id="commit_next">下一页</a>
+			</div>
+		</div>
+		<div class="item">
+			<h3 class="list_title">我的收藏</h3>
+			<p class="tips" id="like_tag">还没有收藏</p>
+			<div class="info_item">
+				<img class="movie_img_content" src="../image/temp.jpg">
+				<p class="movie_content" >movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="info_item">
+				<img class="movie_img_content" src="../image/temp.jpg">
+				<p class="movie_content" >movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="info_item">
+				<img class="movie_img_content" src="../image/temp.jpg">
+				<p class="movie_content" >movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="pages">
+				<a href="" class="botton" id="like_pre">上一页</a>
+				<a href="" class="botton" id="like_next">下一页</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+    <div id="footer_outer">
+    	<div id="footer">
+    		
+    	</div>
+    </div>
+</body>
+</html>
+<script>onstart(1,3,0,3,1,3)</script>

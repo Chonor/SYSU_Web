@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX-get</title>
+  <style>
+    p {font-size:20px}
+  </style>
+</head>
+<body>
+<h1>Ajax-get</h1>
+<p>id：<input id="t1" type="text" onblur="change()"></p>
+<p id="t2">[无]</p>
+
+</body>
+</html>
+<script language="JavaScript" type="text/javascript">
+	function change(){  
+		var t2=document.getElementById("t2");  
+		t2.innerHTML="正在查询...";  
+		setTimeout(show,1);
+	}  
+    function show(){
+        var t1=document.getElementById("t1");
+        var t2=document.getElementById("t2");
+        var xmlhttp = new XMLHttpRequest(); // 创建http请求
+        xmlhttp.onreadystatechange = function() { // 当http请求的状态变化时执行
+            if(xmlhttp.readyState == 4) { // 4-已收到http响应数据
+                if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status == 304) { // 200~299-OK 304-unmodified
+                    alert(xmlhttp.responseText); // http响应的正文
+                    t2.innerHTML = xmlhttp.responseText;
+                } else{
+                    alert("error");
+                }
+            };
+        };
+        var id="get.jsp?id="+t1.value;
+        xmlhttp.open("get",id,true);
+        xmlhttp.send(null);
+    }
+</script>

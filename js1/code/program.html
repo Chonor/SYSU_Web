@@ -1,0 +1,22 @@
+<!DOCTYPE  html>
+<html  lang="zh-cn">
+ <head>
+   <title>编程器</title>
+   <style>
+	   label{
+		   display: inline-block;
+		   width: 80px;
+		   text-align: right;
+		   vertical-align: top;
+	   }
+	 </style>
+ </head>
+ <body>
+    <h1>编程器</h1>
+    <p><label>x:</label><input name="x" id="x" type="text" size="5"></p>
+    <p><label>y:</label><input name="y" id="y" type="text" size="5"></p>
+    <p><label>program:</label><textarea id="program" name="program" rows="10" cols="30"></textarea></p>
+    <p><label> </label><input name="ans" id="ans" type="submit" value="运行" onClick="var ans=new Function('x','y',document.getElementById('program').value);ans(document.getElementById('x').value,document.getElementById('y').value);"></p>
+
+ </body>
+</html>

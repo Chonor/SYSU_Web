@@ -1,0 +1,229 @@
+<%@ page language="java" import="java.util.*,java.sql.*" contentType="text/html; charset=utf-8" %>
+<% request.setCharacterEncoding("utf-8");
+String msg ="";
+Integer pgno = 0; //当前页号
+Integer pgcnt = 4; //每页行数
+String param = request.getParameter("pgno");
+if(param != null && !param.isEmpty()){
+	pgno = Integer.parseInt(param);
+}
+param = request.getParameter("pgcnt");
+if(param != null && !param.isEmpty()){
+	pgcnt = Integer.parseInt(param);
+}
+intpgprev = (pgno>0)?pgno-1:0;
+intpgnext = pgno+1;
+%>
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户资料</title>
+<link href="user_info_list.css" rel="stylesheet" type="text/css">
+
+<style>
+	body{font-size: 18px;}
+	#top{
+		height: 60px;
+		width: 1250px;
+		background-color: aqua;
+		margin: 0 auto;
+	}
+	.list{
+		width: 1250px;
+		position: relative;
+		margin: 0 auto;
+	}
+	.user_info{
+		float: left;
+		height: auto;
+		width: 150px;
+		border:1px gray gray;
+		background: rgba(244,245,247,1) border-box;
+	}
+	.user_info{
+		text-align: center;
+	}
+	#user_img{
+		height: 80px;
+		width: 80px;
+		margin-bottom: -9px;
+	}
+	#user_name{
+		
+	}
+	#user_introduct{
+		height: auto;
+		width: 130px;
+		border-bottom: 1px black solid;
+		border-top: 1px black solid;
+		padding: 10px 5px 10px 5px;
+	}
+	#user_hobby{
+		height: auto;
+		width: 130px;
+		border-bottom: 1px black solid;
+		padding: 0px 5px 10px 5px;
+	}
+	#change_info{
+		height: 40px;
+		width: 130px;
+		background-color: rgba(0,167,222,0.99);
+		color: white;
+		border: 2px rgba(0,167,222,0.99);
+		font-size: 18px;
+	}
+	.list_item{
+		width:1090px;
+		float: right;
+		display: block;
+		background: rgba(244,245,247,1) border-box;
+	}	
+	.comment_item,.collect_item,.notice_item{
+		border-bottom:black 1px solid;
+	}
+	.movie_img_content{
+		display: inline;
+		
+	}
+	.movie_name{
+		font-size: 13px;
+	}
+	#movie_img1{
+		height: 60px;
+		width: 60px;
+		vertical-align: middle;
+		margin-bottom: -7px;
+	}
+	#movie_content1{
+		height: 60px;
+		width: 90px;
+		vertical-align: middle;
+	}
+	.tips{
+		text-align: center;
+		font-size: 13px;
+		color: gray;
+	}
+	.pages{
+		text-align: center;
+		padding-bottom: 10px;
+		margin: 0 15px 0 15px;
+	}
+	.pages a{
+		display: inline-block;
+		padding-top: 8px;
+		height: 30px; width: 70px;
+		color: white;
+		background: rgba(0,167,222,0.99) border-box;
+		font-family: "宋体";
+		font-size: 18px;
+		border: 2px rgba(0,167,222,0.99);
+		text-decoration:none;
+	}
+</style>
+
+</head>
+<body>
+<div id="top">
+	<p>这里是top</p>
+	<div id="menu">
+		<ul>
+
+		</ul>
+	</div>
+</div>
+
+<div class="list">
+	<div class="user_info">
+		<img  id="user_img" src="../image/temp.jpg"></img>
+		<p id="user_name">name</p>
+		<p id="user_introduct">introduct</p>
+		<p id="user_hobby">hobby</p>
+		<button id="change_info">修改个人信息</button>
+	</div>
+	<div class="list_item">
+		<div class="notice_item">
+			<p class="list_title">我的通知</p>
+			<p class="tips">还没有通知</p>
+			<div class="notice_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="notice_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="notice_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="pages">
+				<a href="">上一页</a>
+				<a href="">下一页</a>
+			</div>
+		</div>
+		<div class="comment_item">
+			<p class="list_title">我的评论</p>
+			<p class="tips">还没有评论</p>
+			<div class="comment_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="comment_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="comment_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="pages">
+				<a href="">上一页</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="">下一页</a>
+			</div>
+		</div>
+		<div class="collect_item">
+			<p class="list_title">我的收藏</p>
+			<p class="tips">还没有收藏</p>
+			<div class="collect_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="collect_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="collect_item_list">
+				<img class="movie_img_content" id="movie_img1" src="../image/temp.jpg"></img>
+				<p class="movie_img_content" id="movie_content1">movie_comment</p>
+				<p class="movie_name">movie_name</p>
+			</div>
+			<div class="pages">
+				<a href="">上一页</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="">下一页</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	
+</div>
+</body>
+</html>
